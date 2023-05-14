@@ -11,7 +11,10 @@ export default function RootLayout({
                                    }: {
   children: React.ReactNode;
 }) {
-  const assetPathPrefix= `/${process.env.REPO_NAME}`;
+  let assetPathPrefix= `/${process.env.REPO_NAME}`;
+  if (process.env.NODE_ENV.toLowerCase() == 'development') {
+    assetPathPrefix = '';
+  }
   return (
     <html lang={'en'}>
     <head>

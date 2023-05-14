@@ -44,7 +44,6 @@ export default function Page() {
         position.coords.latitude.toFixed(4),
         position.coords.longitude.toFixed(4)
       ).then((data) => {
-        console.log(data);
         setGridPoints({
           X: data.properties.gridX,
           Y: data.properties.gridY

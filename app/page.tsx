@@ -23,6 +23,15 @@ export default function Page() {
       btn.innerHTML = oldBtnHTML;
     }, 2000)
   }
+  const copyGridPoints = (e) => {
+    let btn = e.target;
+    navigator.clipboard.writeText(`${gridPoints.X},${gridPoints.Y}`);
+    let oldBtnHTML = btn.innerHTML;
+    btn.innerHTML = "Copied!"
+    setTimeout(() => {
+      btn.innerHTML = oldBtnHTML;
+    }, 2000);
+  }
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) =>
@@ -60,6 +69,8 @@ export default function Page() {
       {gridPoints ? (
         <>
           <p>NWS Grid Points: {gridPoints.X},{gridPoints.Y}
+            &nbsp;
+            <button onClick={copyGridPoints}>Copy</button>
           </p>
         </>
       ) : null}

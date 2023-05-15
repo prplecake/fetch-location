@@ -2,9 +2,9 @@
 
 
 import {useEffect, useState} from "react";
-import {fetchGridPoints} from "../lib/api";
+import {fetchGridPoints, fetchWeatherStations} from "../lib/api";
 
-interface GridPoints {
+export interface GridPoints {
   X: number,
   Y: number
 }
@@ -12,6 +12,8 @@ interface GridPoints {
 export default function Page() {
   const [position, setPosition] = useState<GeolocationPosition>(undefined);
   const [gridPoints, setGridPoints] = useState<GridPoints>(null);
+  const [weatherOffice, setWeatherOffice] = useState<string>('');
+  const [weatherStations, setWeatherStations] = useState(null);
   const copyCoords = (e) => {
     let btn = e.target;
     let latitude = position.coords.latitude.toFixed(4);
@@ -48,9 +50,18 @@ export default function Page() {
           X: data.properties.gridX,
           Y: data.properties.gridY
         });
+        setWeatherOffice(data.properties.gridId);
       });
     }
   }, [position]);
+
+  useEffect(() => {
+    if (gridPoints !== null && weatherOffice !== '') {
+      fetchWeatherStations(weatherOffice, gridPoints).then(
+        (data) => setWeatherStations(data)
+      );
+    }
+  }, [weatherOffice, gridPoints]);
 
   return (
     <div className="main">
@@ -73,6 +84,19 @@ export default function Page() {
           </p>
         </>
       ) : null}
+      {weatherStations ? (<>
+        <details>
+          <summary>Weather Stations</summary>
+          <ol>
+            {weatherStations.features.map((feat, i) => (
+              <li
+                key={feat.properties.stationIdentifier}>{feat.properties.stationIdentifier} - {feat.properties.name}</li>
+            ))}
+          </ol>
+        </details>
+      </>) : (<>
+        Loading...
+      </>)}
     </div>
   );
 }

@@ -21,6 +21,7 @@ export default function RootLayout({
       <link rel={'stylesheet'} href={assetPathPrefix+'/styles/main.css'} />
     </head>
     <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
     {children}
     <Footer/>
     </body>

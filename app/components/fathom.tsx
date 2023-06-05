@@ -7,7 +7,7 @@ export function Fathom() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   useEffect(() => {
-    load('', {
+    load('HOYQYQEM', {
       includedDomains: ['prplecake.github.io'],
       spa: 'auto',
     });

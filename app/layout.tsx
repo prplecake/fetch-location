@@ -1,5 +1,6 @@
 import {Metadata} from "next";
 import Footer from "../components/layout/footer";
+import {Fathom} from "./components/fathom";
 
 export const metadata: Metadata = {
   title: 'fetchLocation',
@@ -22,6 +23,7 @@ export default function RootLayout({
     </head>
     <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <Fathom />
     {children}
     <Footer/>
     </body>

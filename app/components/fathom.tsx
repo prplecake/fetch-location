@@ -1,9 +1,9 @@
 'use client';
 import { load, trackPageview } from "fathom-client";
-import { useEffect } from "react";
+import {Suspense, useEffect} from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
-export function Fathom() {
+function TrackPageView() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   useEffect(() => {
@@ -11,9 +11,19 @@ export function Fathom() {
       includedDomains: ['prplecake.github.io'],
       spa: 'auto',
     });
+  }, []);
 
+  useEffect(() => {
     trackPageview();
   }, [pathname, searchParams]);
 
   return null;
+}
+
+export default function Fathom() {
+  return (
+      <Suspense fallback={null}>
+        <TrackPageView/>
+      </Suspense>
+  );
 }

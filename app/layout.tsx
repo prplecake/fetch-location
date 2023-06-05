@@ -1,6 +1,6 @@
 import {Metadata} from "next";
 import Footer from "../components/layout/footer";
-import {Fathom} from "./components/fathom";
+import Fathom from "./components/fathom";
 
 export const metadata: Metadata = {
   title: 'fetchLocation',

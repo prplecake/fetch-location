@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 
 import {useEffect, useState} from "react";
@@ -12,23 +12,23 @@ export interface GridPoints {
 export default function Page() {
   const [position, setPosition] = useState<GeolocationPosition>(undefined);
   const [gridPoints, setGridPoints] = useState<GridPoints>(null);
-  const [weatherOffice, setWeatherOffice] = useState<string>('');
+  const [weatherOffice, setWeatherOffice] = useState<string>("");
   const [weatherStations, setWeatherStations] = useState(null);
   const copyCoords = (e) => {
-    let btn = e.target;
-    let latitude = position.coords.latitude.toFixed(4);
-    let longitude = position.coords.longitude.toFixed(4);
+    const btn = e.target;
+    const latitude = position.coords.latitude.toFixed(4);
+    const longitude = position.coords.longitude.toFixed(4);
     navigator.clipboard.writeText(`${latitude}, ${longitude}`);
-    let oldBtnHTML = btn.innerHTML;
+    const oldBtnHTML = btn.innerHTML;
     btn.innerHTML = "Copied!";
     setTimeout(() => {
       btn.innerHTML = oldBtnHTML;
     }, 2000)
   }
   const copyGridPoints = (e) => {
-    let btn = e.target;
+    const btn = e.target;
     navigator.clipboard.writeText(`${gridPoints.X},${gridPoints.Y}`);
-    let oldBtnHTML = btn.innerHTML;
+    const oldBtnHTML = btn.innerHTML;
     btn.innerHTML = "Copied!"
     setTimeout(() => {
       btn.innerHTML = oldBtnHTML;
@@ -56,7 +56,7 @@ export default function Page() {
   }, [position]);
 
   useEffect(() => {
-    if (gridPoints !== null && weatherOffice !== '') {
+    if (gridPoints !== null && weatherOffice !== "") {
       fetchWeatherStations(weatherOffice, gridPoints).then(
         (data) => setWeatherStations(data)
       );
@@ -88,7 +88,7 @@ export default function Page() {
         <details>
           <summary>Weather Stations</summary>
           <ol>
-            {weatherStations.features.map((feat, i) => (
+            {weatherStations.features.map((feat) => (
               <li
                 key={feat.properties.stationIdentifier}>{feat.properties.stationIdentifier} - {feat.properties.name}</li>
             ))}

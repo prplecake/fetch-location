@@ -11,7 +11,7 @@ export interface GridPoints {
   Y: number
 }
 
-export default function Page() {
+const Page = () => {
   const [position, setPosition] = useState<GeolocationPosition>(undefined);
   const [gridPoints, setGridPoints] = useState<GridPoints>(null);
   const [weatherOffice, setWeatherOffice] = useState<string>("");
@@ -111,4 +111,5 @@ export default function Page() {
       />
     </div>
   );
-}
+};
+export default Page;

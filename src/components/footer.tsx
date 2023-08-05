@@ -1,4 +1,4 @@
-export default function Footer() {
+const Footer = () => {
   return (
     <>
       {process.env.COMMIT_HASH ? (
@@ -11,4 +11,5 @@ export default function Footer() {
       ) : null}
     </>
   );
-}
+};
+export default Footer;

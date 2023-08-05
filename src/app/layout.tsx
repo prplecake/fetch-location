@@ -4,6 +4,7 @@ import Fathom from "../components/fathom";
 import "./global.scss";
 import React from "react";
 
+// noinspection JSUnusedGlobalSymbols
 export const metadata: Metadata = {
   title: "fetchLocation",
   description: "fetches a location"

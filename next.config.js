@@ -1,14 +1,15 @@
-const commitHash = require('child_process')
-  .execSync('git rev-parse --short HEAD')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const commitHash = require("child_process")
+  .execSync("git rev-parse --short HEAD")
   .toString().trim();
-const repoName = 'fetchLocation';
-const repoUrl = 'https://github.com/prplecake/fetchLocation';
+const repoName = "fetchLocation";
+const repoUrl = "https://github.com/prplecake/fetchLocation";
 
 /**
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  output: 'export',
+  output: "export",
   env: {
     COMMIT_HASH: commitHash,
     REPO_NAME: repoName,

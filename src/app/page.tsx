@@ -3,6 +3,8 @@
 
 import React, {useEffect, useState} from "react";
 import {fetchGridPoints, fetchWeatherStations} from "../lib/api";
+import {toast, ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 export interface GridPoints {
   X: number,
@@ -18,7 +20,10 @@ export default function Page() {
     const btn = e.target as HTMLButtonElement;
     const latitude = position.coords.latitude.toFixed(4);
     const longitude = position.coords.longitude.toFixed(4);
-    navigator.clipboard.writeText(`${latitude}, ${longitude}`);
+    navigator.clipboard.writeText(`${latitude}, ${longitude}`)
+      .then(() => {
+        toast("Copied to clipboard!");
+      });
     const oldBtnHTML = btn.innerHTML;
     btn.innerHTML = "Copied!";
     setTimeout(() => {
@@ -27,7 +32,10 @@ export default function Page() {
   }
   const copyGridPoints = (e: React.MouseEvent<HTMLButtonElement>) => {
     const btn = e.target as HTMLButtonElement;
-    navigator.clipboard.writeText(`${gridPoints.X},${gridPoints.Y}`);
+    navigator.clipboard.writeText(`${gridPoints.X},${gridPoints.Y}`)
+      .then(() => {
+        toast("Copied to clipboard!");
+      });
     const oldBtnHTML = btn.innerHTML;
     btn.innerHTML = "Copied!"
     setTimeout(() => {
@@ -97,6 +105,10 @@ export default function Page() {
       </>) : (<>
         Loading...
       </>)}
+      <ToastContainer
+        position={"bottom-left"}
+        theme={"dark"}
+      />
     </div>
   );
 }

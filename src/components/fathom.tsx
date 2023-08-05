@@ -3,7 +3,7 @@ import { load, trackPageview } from "fathom-client";
 import {Suspense, useEffect} from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
-function TrackPageView() {
+const TrackPageView = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   useEffect(() => {
@@ -18,12 +18,13 @@ function TrackPageView() {
   }, [pathname, searchParams]);
 
   return null;
-}
+};
 
-export default function Fathom() {
+const Fathom = () => {
   return (
       <Suspense fallback={null}>
         <TrackPageView/>
       </Suspense>
   );
-}
+};
+export default Fathom;

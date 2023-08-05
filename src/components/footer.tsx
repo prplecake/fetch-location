@@ -1,6 +1,6 @@
 import "./footer.scss";
 
-export default function Footer() {
+const Footer = () => {
   return (
     <>
       {process.env.COMMIT_HASH ? (
@@ -12,5 +12,6 @@ export default function Footer() {
           </div>
       ) : null}
     </>
-  )
-}
+  );
+};
+export default Footer;

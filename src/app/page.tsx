@@ -1,39 +1,48 @@
 "use client";
 
 
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {fetchGridPoints, fetchWeatherStations} from "../lib/api";
+import {toast, ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
+import {FeatureCollection} from "geojson";
 
 export interface GridPoints {
   X: number,
   Y: number
 }
 
-export default function Page() {
+const Page = () => {
   const [position, setPosition] = useState<GeolocationPosition>(undefined);
   const [gridPoints, setGridPoints] = useState<GridPoints>(null);
   const [weatherOffice, setWeatherOffice] = useState<string>("");
-  const [weatherStations, setWeatherStations] = useState(null);
-  const copyCoords = (e) => {
-    const btn = e.target;
+  const [weatherStations, setWeatherStations] = useState<FeatureCollection>(null);
+  const copyCoords = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const btn = e.target as HTMLButtonElement;
     const latitude = position.coords.latitude.toFixed(4);
     const longitude = position.coords.longitude.toFixed(4);
-    navigator.clipboard.writeText(`${latitude}, ${longitude}`);
+    navigator.clipboard.writeText(`${latitude}, ${longitude}`)
+      .then(() => {
+        toast("Copied to clipboard!");
+      });
     const oldBtnHTML = btn.innerHTML;
     btn.innerHTML = "Copied!";
     setTimeout(() => {
       btn.innerHTML = oldBtnHTML;
-    }, 2000)
-  }
-  const copyGridPoints = (e) => {
-    const btn = e.target;
-    navigator.clipboard.writeText(`${gridPoints.X},${gridPoints.Y}`);
+    }, 2000);
+  };
+  const copyGridPoints = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const btn = e.target as HTMLButtonElement;
+    navigator.clipboard.writeText(`${gridPoints.X},${gridPoints.Y}`)
+      .then(() => {
+        toast("Copied to clipboard!");
+      });
     const oldBtnHTML = btn.innerHTML;
-    btn.innerHTML = "Copied!"
+    btn.innerHTML = "Copied!";
     setTimeout(() => {
       btn.innerHTML = oldBtnHTML;
     }, 2000);
-  }
+  };
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) =>
@@ -97,6 +106,11 @@ export default function Page() {
       </>) : (<>
         Loading...
       </>)}
+      <ToastContainer
+        position={"bottom-left"}
+        theme={"dark"}
+      />
     </div>
   );
-}
+};
+export default Page;

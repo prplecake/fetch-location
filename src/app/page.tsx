@@ -5,6 +5,7 @@ import React, {useEffect, useState} from "react";
 import {fetchGridPoints, fetchWeatherStations} from "../lib/api";
 import {toast, ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import {FeatureCollection} from "geojson";
 
 export interface GridPoints {
   X: number,
@@ -15,7 +16,7 @@ const Page = () => {
   const [position, setPosition] = useState<GeolocationPosition>(undefined);
   const [gridPoints, setGridPoints] = useState<GridPoints>(null);
   const [weatherOffice, setWeatherOffice] = useState<string>("");
-  const [weatherStations, setWeatherStations] = useState(null);
+  const [weatherStations, setWeatherStations] = useState<FeatureCollection>(null);
   const copyCoords = (e: React.MouseEvent<HTMLButtonElement>) => {
     const btn = e.target as HTMLButtonElement;
     const latitude = position.coords.latitude.toFixed(4);

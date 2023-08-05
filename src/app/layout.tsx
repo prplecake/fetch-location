@@ -2,6 +2,7 @@ import {Metadata} from "next";
 import Footer from "../components/footer";
 import Fathom from "../components/fathom";
 import "./global.scss";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "fetchLocation",

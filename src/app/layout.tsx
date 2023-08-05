@@ -5,7 +5,7 @@ import Fathom from "../components/fathom";
 export const metadata: Metadata = {
   title: "fetchLocation",
   description: "fetches a location"
-}
+};
 
 export default function RootLayout({
                                      children,
@@ -28,5 +28,5 @@ export default function RootLayout({
     <Footer/>
     </body>
     </html>
-  )
+  );
 }

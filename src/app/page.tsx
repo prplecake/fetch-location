@@ -28,8 +28,8 @@ export default function Page() {
     btn.innerHTML = "Copied!";
     setTimeout(() => {
       btn.innerHTML = oldBtnHTML;
-    }, 2000)
-  }
+    }, 2000);
+  };
   const copyGridPoints = (e: React.MouseEvent<HTMLButtonElement>) => {
     const btn = e.target as HTMLButtonElement;
     navigator.clipboard.writeText(`${gridPoints.X},${gridPoints.Y}`)
@@ -37,11 +37,11 @@ export default function Page() {
         toast("Copied to clipboard!");
       });
     const oldBtnHTML = btn.innerHTML;
-    btn.innerHTML = "Copied!"
+    btn.innerHTML = "Copied!";
     setTimeout(() => {
       btn.innerHTML = oldBtnHTML;
     }, 2000);
-  }
+  };
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) =>

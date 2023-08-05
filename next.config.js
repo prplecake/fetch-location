@@ -15,6 +15,6 @@ const nextConfig = {
     REPO_NAME: repoName,
     REPO_URL: repoUrl,
   }
-}
+};
 
 module.exports = nextConfig;

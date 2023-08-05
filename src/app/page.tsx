@@ -1,7 +1,7 @@
 "use client";
 
 
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {fetchGridPoints, fetchWeatherStations} from "../lib/api";
 
 export interface GridPoints {
@@ -14,8 +14,8 @@ export default function Page() {
   const [gridPoints, setGridPoints] = useState<GridPoints>(null);
   const [weatherOffice, setWeatherOffice] = useState<string>("");
   const [weatherStations, setWeatherStations] = useState(null);
-  const copyCoords = (e) => {
-    const btn = e.target;
+  const copyCoords = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const btn = e.target as HTMLButtonElement;
     const latitude = position.coords.latitude.toFixed(4);
     const longitude = position.coords.longitude.toFixed(4);
     navigator.clipboard.writeText(`${latitude}, ${longitude}`);
@@ -25,8 +25,8 @@ export default function Page() {
       btn.innerHTML = oldBtnHTML;
     }, 2000)
   }
-  const copyGridPoints = (e) => {
-    const btn = e.target;
+  const copyGridPoints = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const btn = e.target as HTMLButtonElement;
     navigator.clipboard.writeText(`${gridPoints.X},${gridPoints.Y}`);
     const oldBtnHTML = btn.innerHTML;
     btn.innerHTML = "Copied!"

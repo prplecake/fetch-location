@@ -99,7 +99,11 @@ const Page = () => {
           <ol>
             {weatherStations.features.map((feat) => (
               <li
-                key={feat.properties.stationIdentifier}>{feat.properties.stationIdentifier} - {feat.properties.name}</li>
+                key={feat.properties.stationIdentifier}>
+                <a href={`https://forecast.weather.gov/zipcity.php?inputstring=${feat.properties.stationIdentifier}`} target={"_blank"}>
+                  {feat.properties.stationIdentifier}
+                </a> - {feat.properties.name}
+              </li>
             ))}
           </ol>
         </details>

@@ -2,7 +2,7 @@
   "dependencies": {
     "@types/geojson": "^7946.0.13",
     "fathom-client": "^3.6.0",
-    "next": "^14.0.1",
+    "next": "^14.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-toastify": "^9.1.3",

@@ -1,6 +1,6 @@
 # fetch-location
 
-https://prplecake.github.io/fetchLocation
+https://fetch-location.vercel.app/
 
 A very simple NextJS app created so I could easily figure out the [NWS 
 gridpoints][nws-gridpoints] for my location for use with my 

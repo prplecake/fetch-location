@@ -1,7 +1,11 @@
 "use client";
-import { load, trackPageview } from "fathom-client";
+import {EventOptions, load, trackEvent, trackPageview } from "fathom-client";
 import {Suspense, useEffect} from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+
+export const TrackEvent = (event: string, opts?: EventOptions) => {
+  trackEvent(event, opts);
+}
 
 const TrackPageView = () => {
   const pathname = usePathname();

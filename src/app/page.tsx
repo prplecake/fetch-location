@@ -6,6 +6,7 @@ import {fetchGridPoints, fetchWeatherStations} from "../lib/api";
 import {toast, ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import {FeatureCollection} from "geojson";
+import {TrackEvent} from "../components/fathom";
 
 export interface GridPoints {
   X: number,
@@ -78,7 +79,10 @@ const Page = () => {
       {position !== undefined ? (
         <p>Coords: {position.coords.latitude.toFixed(4)}, {position.coords.longitude.toFixed(4)}
           &nbsp;
-          <button onClick={copyCoords}>Copy</button>
+          <button onClick={(e) => {
+            TrackEvent("copy-coords");
+            copyCoords(e);
+          }}>Copy</button>
         </p>
       ) : (
         <>
@@ -89,7 +93,10 @@ const Page = () => {
         <>
           <p>NWS Grid Points: {gridPoints.X},{gridPoints.Y}
             &nbsp;
-            <button onClick={copyGridPoints}>Copy</button>
+            <button onClick={(e) => {
+              TrackEvent("copy-grid-points");
+              copyGridPoints(e);
+            }}>Copy</button>
           </p>
         </>
       ) : null}

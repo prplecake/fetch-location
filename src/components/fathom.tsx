@@ -9,7 +9,6 @@ const TrackPageView = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   useEffect(() => {
-      includedDomains: ["prplecake.github.io"],
     load(SITE_ID, {
       spa: "auto",
     });

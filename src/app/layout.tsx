@@ -6,7 +6,7 @@ import React from "react";
 
 // noinspection JSUnusedGlobalSymbols
 export const metadata: Metadata = {
-  title: "fetchLocation",
+  title: "fetch-location",
   description: "fetches a location"
 };
 

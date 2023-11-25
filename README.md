@@ -1,4 +1,4 @@
-# fetchLocation
+# fetch-location
 
 https://prplecake.github.io/fetchLocation
 

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/fetchLocation.iml" filepath="$PROJECT_DIR$/.idea/fetchLocation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/fetch-location.iml" filepath="$PROJECT_DIR$/.idea/fetch-location.iml" />
     </modules>
   </component>
 </project>

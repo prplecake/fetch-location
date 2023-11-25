@@ -1,6 +1,10 @@
 Compiled output
 /out/
 
+.env
+.env.*
+!.env.example
+
 # Logs
 logs
 *.log

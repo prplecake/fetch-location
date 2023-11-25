@@ -2,8 +2,8 @@
 const commitHash = require("child_process")
   .execSync("git rev-parse --short HEAD")
   .toString().trim();
-const repoName = "fetchLocation";
-const repoUrl = "https://github.com/prplecake/fetchLocation";
+const repoName = "fetch-location";
+const repoUrl = `https://github.com/prplecake/${repoName}`;
 
 /**
  * @type {import('next').NextConfig}

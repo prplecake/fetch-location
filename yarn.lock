@@ -1930,9 +1930,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-n@npm:^17.4.0":
-  version: 17.4.0
-  resolution: "eslint-plugin-n@npm:17.4.0"
+"eslint-plugin-n@npm:^17.6.0":
+  version: 17.6.0
+  resolution: "eslint-plugin-n@npm:17.6.0"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.4.0"
     enhanced-resolve: "npm:^5.15.0"
@@ -1944,7 +1944,7 @@ __metadata:
     semver: "npm:^7.5.3"
   peerDependencies:
     eslint: ">=8.23.0"
-  checksum: 10c0/3ec2c14fb0b97eae0911fc7e07b4bb29d0095d21fabcff490c01a1195a6d1ae511eefac37f8796c9858b0a09bc85a0ebfa2ac5c567593adbc22a454cb1496b39
+  checksum: 10c0/8b3837ef3049c1bb53db48547ddb47463932de22a73c9d9b90e1598c124e50a1b06c0e48407589b8b3724add1620fe5b47cc71e1767923d033a604f0f6400e2a
   languageName: node
   linkType: hard
 
@@ -4475,7 +4475,7 @@ __metadata:
     eslint-config-next: "npm:14.2.3"
     eslint-config-standard-with-typescript: "npm:^43.0.1"
     eslint-plugin-import: "npm:^2.29.1"
-    eslint-plugin-n: "npm:^17.4.0"
+    eslint-plugin-n: "npm:^17.6.0"
     eslint-plugin-promise: "npm:^6.0.0"
     eslint-plugin-react: "npm:^7.34.1"
     fathom-client: "npm:^3.6.0"

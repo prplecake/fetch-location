@@ -1,0 +1,53 @@
+﻿@page "/"
+@using FetchLocation.Web.Entities
+@using FetchLocation.Web.Services
+@inject IJSRuntime JS
+@inject NwsApiService NwsApiService
+<div class="main">
+  <PageTitle>fetch-location</PageTitle>
+
+  <p>Your Location:</p>
+
+  <p>Coords: @coordsStr</p>
+
+  <p>NWS Grid Points: @gridPoints</p>
+
+  <details>
+    <summary>Weather Stations</summary>
+    @if (weatherStations is not null && weatherStations.Any())
+    {
+      <ol>
+        @foreach (var station in weatherStations)
+        {
+          <li>
+            <a href="https://forecast.weather.gov/zipcity.php?inputstring=@station.StationIdentifier" target="_blank">
+              @station.StationIdentifier
+            </a> - @station.Name
+          </li>
+        }
+      </ol>
+    }
+    else
+    {
+      <p>Loading...</p>
+    }
+  </details>
+</div>
+
+@code {
+  private Coordinates? coords;
+  private string? coordsStr = "Loading...";
+  private GridPoints? gridPoints;
+  private List<WeatherStation>? weatherStations;
+  private async Task<Coordinates> GetLocation() => await JS.InvokeAsync<Coordinates>("getLocation");
+  protected override async Task OnInitializedAsync()
+  {
+    coords = await GetLocation();
+    coordsStr = coords.ToString();
+    StateHasChanged();
+    if (coords is not null)
+      gridPoints = await NwsApiService.GetGridPointsAsync(coords);
+    if (gridPoints is not null)
+      weatherStations = await NwsApiService.GetWeatherStationsAsync(gridPoints);
+  }
+}

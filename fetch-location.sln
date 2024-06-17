@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{36C3B75B-4B4D-4B0D-A8F5-32B7AE46696E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D8114D5A-2DC2-4AB9-AFB8-071F9200103C}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FetchLocation.Web", "src\FetchLocation.Web\FetchLocation.Web.csproj", "{70804F97-9CFB-49BA-8043-0DDEA641436B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI Workflows", "CI Workflows", "{C14D208D-4F38-4631-B092-56CBE87C868E}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70804F97-9CFB-49BA-8043-0DDEA641436B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70804F97-9CFB-49BA-8043-0DDEA641436B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70804F97-9CFB-49BA-8043-0DDEA641436B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70804F97-9CFB-49BA-8043-0DDEA641436B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{70804F97-9CFB-49BA-8043-0DDEA641436B} = {36C3B75B-4B4D-4B0D-A8F5-32B7AE46696E}
+		{C14D208D-4F38-4631-B092-56CBE87C868E} = {D8114D5A-2DC2-4AB9-AFB8-071F9200103C}
+	EndGlobalSection
+EndGlobal

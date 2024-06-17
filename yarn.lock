@@ -2361,10 +2361,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fathom-client@npm:^3.6.0":
-  version: 3.6.0
-  resolution: "fathom-client@npm:3.6.0"
-  checksum: 10c0/1c7d036ad6dda8b6d8ab41c926661aadff668cad8c72b1d96c39fff588f676f6bd07d71de79f40c9fa70af2521fea78a660380abadf323b2cb7d042dc358c6b1
+"fathom-client@npm:^3.7.0":
+  version: 3.7.0
+  resolution: "fathom-client@npm:3.7.0"
+  checksum: 10c0/85c39c02c4a3d2b3e24d172d0e46dd5892df1738a69df920da2091347013ea5db13ded204ce3aa7de222dfdd1bd18b8be55f3a1a95c119a28ff7103d34953541
   languageName: node
   linkType: hard
 
@@ -4714,7 +4714,7 @@ __metadata:
     eslint-plugin-n: "npm:^17.7.0"
     eslint-plugin-promise: "npm:^6.2.0"
     eslint-plugin-react: "npm:^7.34.2"
-    fathom-client: "npm:^3.6.0"
+    fathom-client: "npm:^3.7.0"
     next: "npm:^14.2.3"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"

@@ -13,7 +13,7 @@
     <script>
       window.getLocation = async () => {
         const pos = await new Promise((resolve, reject) => {
-          navigator.geolocation.getCurrentPosition(resolve, reject);
+          navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: false });
         });
         const rtn =  { longitude: pos.coords.longitude, latitude: pos.coords.latitude };
         // console.log(rtn);

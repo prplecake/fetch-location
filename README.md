@@ -1,8 +1,8 @@
 # fetch-location
 
-https://fetch-location.vercel.app/
+https://prplecake.github.io/fetch-location/
 
-A very simple NextJS app created so I could easily figure out the [NWS 
+A very simple Blazor app created so I could easily figure out the [NWS 
 gridpoints][nws-gridpoints] for my location for use with my 
 [remote-ac-controller] project.
 

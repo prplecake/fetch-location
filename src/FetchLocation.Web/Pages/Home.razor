@@ -2,15 +2,28 @@
 @using FetchLocation.Web.Entities
 @using FetchLocation.Web.Services
 @inject IJSRuntime JS
+@inject ClipboardService ClipboardService
 @inject NwsApiService NwsApiService
 <div class="main">
   <PageTitle>fetch-location</PageTitle>
 
   <p>Your Location:</p>
 
-  <p>Coords: @coordsStr</p>
+  <p>
+    Coords: @(coords is not null ? coords : "Loading...")
+    @if (coords is not null)
+    {
+      <button @onclick="async () => { await ClipboardService.CopyToClipboard(coords.ToString()); }">Copy</button>
+    }
+  </p>
 
-  <p>NWS Grid Points: @gridPoints</p>
+  <p>
+    NWS Grid Points: @(gridPoints is not null ? gridPoints : "Loading...")
+    @if (gridPoints is not null)
+    {
+      <button @onclick="async () => {await ClipboardService.CopyToClipboard(gridPoints.ToString());}">Copy</button>
+    }
+  </p>
 
   <details>
     <summary>Weather Stations</summary>
@@ -36,14 +49,12 @@
 
 @code {
   private Coordinates? coords;
-  private string? coordsStr = "Loading...";
   private GridPoints? gridPoints;
   private List<WeatherStation>? weatherStations;
   private async Task<Coordinates> GetLocation() => await JS.InvokeAsync<Coordinates>("getLocation");
   protected override async Task OnInitializedAsync()
   {
     coords = await GetLocation();
-    coordsStr = coords.ToString();
     StateHasChanged();
     if (coords is not null)
       gridPoints = await NwsApiService.GetGridPointsAsync(coords);

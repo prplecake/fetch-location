@@ -2,6 +2,7 @@
 @using FetchLocation.Web.Entities
 @using FetchLocation.Web.Services
 @inject IJSRuntime JS
+@inject ILogger<Index> Logger
 @inject ClipboardService ClipboardService
 @inject NwsApiService NwsApiService
 <div class="main">
@@ -13,7 +14,7 @@
     Coords: @(coords is not null ? coords : "Loading...")
     @if (coords is not null)
     {
-      <button @onclick="async () => { await ClipboardService.CopyToClipboard(coords.ToString()); }">Copy</button>
+      <button @onclick="CopyCoordsHandler">@CopyCoordsButtonText</button>
     }
   </p>
 
@@ -21,7 +22,7 @@
     NWS Grid Points: @(gridPoints is not null ? gridPoints : "Loading...")
     @if (gridPoints is not null)
     {
-      <button @onclick="async () => {await ClipboardService.CopyToClipboard(gridPoints.ToString());}">Copy</button>
+      <button @onclick="CopyGridPointsHandler">@CopyGridPointsButtonText</button>
     }
   </p>
 
@@ -51,6 +52,8 @@
   private Coordinates? coords;
   private GridPoints? gridPoints;
   private List<WeatherStation>? weatherStations;
+  public string CopyGridPointsButtonText = "Copy";
+  public string CopyCoordsButtonText = "Copy";
   private async Task<Coordinates> GetLocation() => await JS.InvokeAsync<Coordinates>("getLocation");
   protected override async Task OnInitializedAsync()
   {
@@ -60,5 +63,42 @@
       gridPoints = await NwsApiService.GetGridPointsAsync(coords);
     if (gridPoints is not null)
       weatherStations = await NwsApiService.GetWeatherStationsAsync(gridPoints);
+  }
+  private async Task CopyCoordsHandler(MouseEventArgs e)
+  {
+    try
+    {
+      await ClipboardService.CopyToClipboard(coords.ToString());
+      CopyCoordsButtonText = "Copied!";
+      StateHasChanged();
+      _ = new Timer(_ =>
+      {
+        CopyCoordsButtonText = "Copy";
+        StateHasChanged();
+      }, null, 3000, Timeout.Infinite);
+    }
+    catch (Exception ex)
+    {
+      Logger.LogError(ex, "Failed to copy coords to clipboard");
+    }
+
+  }
+  private async Task CopyGridPointsHandler(MouseEventArgs e)
+  {
+    try
+    {
+      await ClipboardService.CopyToClipboard(gridPoints.ToString());
+      CopyGridPointsButtonText = "Copied!";
+      StateHasChanged();
+      _ = new Timer(_ =>
+      {
+        CopyGridPointsButtonText = "Copy";
+        StateHasChanged();
+      }, null, 3000, Timeout.Infinite);
+    }
+    catch (Exception ex)
+    {
+      Logger.LogError(ex, "Failed to copy grid points to clipboard");
+    }
   }
 }

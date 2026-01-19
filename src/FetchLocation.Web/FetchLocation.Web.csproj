@@ -10,7 +10,7 @@
     <PackageReference Include="GeoJSON.Text" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.22" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.1" PrivateAssets="all" />
-  <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="8.0.22" />
+  <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="8.0.23" />
   </ItemGroup>
 
 </Project>
